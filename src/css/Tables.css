@@ -1,0 +1,89 @@
+/*  */
+/* DASHBOARD */
+/*  */
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 2fr;
+  column-gap: 5vw;
+}
+.dashboard-stats-grid,
+.dashboard-stats-grid-vehicles {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+}
+.dashboard-stats-grid-vehicles {
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+.dashboard-stats-grid-title,
+.dashboard-stats-grid-vehicles-title {
+  grid-column: 1/3;
+  font-size: 2rem;
+  background-color: #eee;
+  text-align: center;
+  padding-block: 1.2rem;
+}
+.dashboard-stats-grid-vehicles-title {
+  grid-column: 1/5;
+}
+
+.dashboard-stats-grid-card {
+  background-color: #eee;
+  height: 10vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.dashboard-stats-grid-card > h3 {
+  font-size: 3.2rem;
+}
+.dashboard-stats-grid-card > div {
+  font-size: 1.8rem;
+}
+/*  */
+/* RIDES */
+/*  */
+
+.rides-top {
+  display: grid;
+  justify-items: start;
+  grid-template-columns: repeat(7, 1fr);
+  justify-content: space-between;
+  font-size: 2rem;
+  margin-bottom: 2.4rem;
+}
+.rides-card {
+  display: grid;
+  justify-items: start;
+  min-height: 5vh;
+  align-items: center;
+  grid-template-columns: repeat(7, 1fr);
+  background-color: #eee;
+  justify-content: space-between;
+  font-size: 2rem;
+}
+
+/*  */
+/* VEHICLES */
+/*  */
+.vehicles-top {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  justify-content: space-between;
+  font-size: 2rem;
+  margin-bottom: 2.4rem;
+}
+.vehicles-card {
+  min-height: 5vh;
+  align-items: center;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  background-color: #eee;
+  justify-content: space-between;
+  font-size: 2rem;
+}
+
+/*  */
+/* ANALYTICS */
+/*  */

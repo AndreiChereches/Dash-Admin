@@ -1,0 +1,21 @@
+.flex {
+  display: flex;
+}
+.column {
+  flex-direction: column;
+}
+.width100 {
+  width: 100%;
+}
+.table {
+
+  height: 100%;
+  padding-inline: 4.8rem;
+  padding-block: 7.8rem;
+}
+.title {
+  font-size: 4.8rem;
+
+  padding-inline: 4.8rem;
+  padding-block: 2.4rem;
+}
