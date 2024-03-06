@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "./css/Admin.css";
+import "../css/Admin.css";
 import Nav from "./Nav.jsx";
 import Dashboard from "./Dashboard.jsx";
 import Rides from "./Rides.jsx";

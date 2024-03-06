@@ -1,4 +1,4 @@
-import "./css/Tables.css";
+import "../css/Tables.css";
 
 function RidesCard() {
   return (

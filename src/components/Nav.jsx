@@ -1,5 +1,5 @@
-import "./css/Nav.css";
-import logo from "./assets/logo.jpg";
+import "../css/Nav.css";
+import logo from "../assets/logo.jpg";
 
 // eslint-disable-next-line react/prop-types
 function Nav({ callback }) {
