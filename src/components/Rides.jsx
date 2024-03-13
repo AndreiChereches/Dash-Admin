@@ -1,7 +1,11 @@
+import { useEffect } from "react";
 import "../css/Tables.css";
 import RidesCard from "./RidesCard.jsx";
+import axios from "axios";
+import { useState } from "react";
 
 function Rides() {
+
   return (
     <>
       <div className="flex column width100 rides-flex">
@@ -14,7 +18,7 @@ function Rides() {
           <div>Rating</div>
           <div>Report</div>
         </div>
-        <RidesCard />
+        <RidesCard/>
         <RidesCard />
         <RidesCard />
         <RidesCard />
