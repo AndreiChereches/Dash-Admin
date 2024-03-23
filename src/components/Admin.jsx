@@ -1,27 +1,47 @@
 import { useState } from "react";
 import "../css/Admin.css";
 import Nav from "./Nav.jsx";
-import Dashboard from "./Dashboard.jsx";
+import Dashboard from "./Dashboard/Dashboard.jsx";
 import Rides from "./Rides.jsx";
-import Vehicles from "./Vehicles.jsx";
-import Analytics from "./Analytics.jsx";
+import Favorites from "./Favorites.jsx";
+import Settings from "./Settings.jsx";
+import Report from "./Report.jsx";
+import logo from "../assets/logo.png";
 
 function App() {
   const [table, setTable] = useState("Dashboard");
-  const callThis = (value) => {
+  const [secondaryColor, setSecondaryColor] = useState("204, 231, 255");
+  const activeTable = (value) => {
     setTable(value);
   };
   return (
     <>
+      <div
+        className="flex title-flex"
+        style={{
+          backgroundColor: `rgba(${(secondaryColor)},0.5)`,
+        }}
+      >
+        <a href="https://www.ridedash.eu">
+          <img className="logo" src={logo} alt="logo" />
+        </a>
+        <h2 className="title">{table}</h2>
+      </div>
       <div className="flex">
-        <Nav callback={callThis} />
+        <Nav
+          callback={activeTable}
+          active={table}
+          secondaryColor={secondaryColor}
+        />
         <div className="flex column width100">
-          <h2 className="title">{table}</h2>
           <div className="table">
-            {table === "Dashboard" ? <Dashboard /> : null}
+            {table === "Dashboard" ? (
+              <Dashboard secondaryColor={secondaryColor} />
+            ) : null}
             {table === "Rides" ? <Rides /> : null}
-            {table === "Vehicles" ? <Vehicles /> : null}
-            {table === "Analytics" ? <Analytics /> : null}
+            {table === "Report" ? <Report /> : null}
+            {table === "Favorites" ? <Favorites /> : null}
+            {table === "Settings" ? <Settings /> : null}
           </div>
         </div>
       </div>

@@ -1,37 +1,121 @@
+import { motion } from "framer-motion";
+
+import BikeSVG from "../assets/svg/nav-svg/BikeSVG";
+import BikeActiveSVG from "../assets/svg/nav-svg/BikeActiveSVG";
+import HomeSVG from "../assets/svg/nav-svg/HomeSVG";
+import HomeActiveSVG from "../assets/svg/nav-svg/HomeActiveSVG";
+import ReportSVG from "../assets/svg/ReportSVG";
+import FavoriteSVG from "../assets/svg/nav-svg/FavoriteSVG";
+import FavoriteActiveSVG from "../assets/svg/nav-svg/FavoriteActiveSVG";
+import ReportActiveSVG from "../assets/svg/nav-svg/ReportActiveSVG";
+import SettingsSVG from "../assets/svg/nav-svg/SettingsSVG";
+import SettingsActiveSVG from "../assets/svg/nav-svg/SettingsActiveSVG";
+import LogOutSVG from "../assets/svg/nav-svg/LogOutSVG";
 import "../css/Nav.css";
-import logo from "../assets/logo.jpg";
 
 // eslint-disable-next-line react/prop-types
-function Nav({ callback }) {
+function Nav({ callback, active, secondaryColor }) {
   return (
     <>
-      <nav className="main-nav">
-        <li>
-          <a href="https://www.ridedash.eu">
-            <img className="main-nav-logo" src={logo} alt="logo" />
-          </a>
-        </li>
-        <li>
-          <button onClick={() => callback("Dashboard")} href="/">
-            Dashboard
+      <motion.nav className="main-nav">
+        <motion.li
+          initial={{ transform: "translateX(-150px)" }}
+          animate={{ transform: "translateX(0px)" }}
+        >
+          <button
+            style={
+              active === "Dashboard"
+                ? { backgroundColor: `rgba(${secondaryColor})` }
+                : { backgroundColor: `rgba(${secondaryColor},0.5)` }
+            }
+            onClick={() => callback("Dashboard")}
+            href="/"
+          >
+            {active === "Dashboard" ? <HomeActiveSVG /> : <HomeSVG />}
           </button>
-        </li>
-        <li>
-          <button onClick={() => callback("Rides")} href="/">
-            Rides
+        </motion.li>
+        <motion.li
+          initial={{ transform: "translateX(-150px)" }}
+          animate={{ transform: "translateX(0px)" }}
+          transition={{ delay: 0.1 }}
+        >
+          <button
+            style={
+              active === "Rides"
+                ? { backgroundColor: `rgba(${secondaryColor})` }
+                : { backgroundColor: `rgba(${secondaryColor},0.5)` }
+            }
+            onClick={() => callback("Rides")}
+            href="/"
+          >
+            {active === "Rides" ? <BikeActiveSVG /> : <BikeSVG />}
           </button>
-        </li>
-        <li>
-          <button onClick={() => callback("Vehicles")} href="/">
-            Vehicles
+        </motion.li>
+        <motion.li
+          initial={{ transform: "translateX(-150px)" }}
+          animate={{ transform: "translateX(0px)" }}
+          transition={{ delay: 0.2 }}
+        >
+          <button
+            style={
+              active === "Report"
+                ? { backgroundColor: `rgba(${secondaryColor})` }
+                : { backgroundColor: `rgba(${secondaryColor},0.5)` }
+            }
+            onClick={() => callback("Report")}
+            href="/"
+          >
+            {active === "Report" ? <ReportActiveSVG /> : <ReportSVG />}
           </button>
-        </li>
-        <li>
-          <button onClick={() => callback("Analytics")} href="/">
-            Analytics
+        </motion.li>
+        <motion.li
+          initial={{ transform: "translateX(-150px)" }}
+          animate={{ transform: "translateX(0px)" }}
+          transition={{ delay: 0.3 }}
+        >
+          <button
+            style={
+              active === "Favorites"
+                ? { backgroundColor: `rgba(${secondaryColor})` }
+                : { backgroundColor: `rgba(${secondaryColor},0.5)` }
+            }
+            onClick={() => callback("Favorites")}
+            href="/"
+          >
+            {active === "Favorites" ? <FavoriteActiveSVG /> : <FavoriteSVG />}
           </button>
-        </li>
-      </nav>
+        </motion.li>
+        <motion.li
+          initial={{ transform: "translateX(-150px)" }}
+          animate={{ transform: "translateX(0px)" }}
+          transition={{ delay: 0.4 }}
+        >
+          <button
+            style={
+              active === "Settings"
+                ? { backgroundColor: `rgba(${secondaryColor})` }
+                : { backgroundColor: `rgba(${secondaryColor},0.5)` }
+            }
+            onClick={() => callback("Settings")}
+            href="/"
+          >
+            {active === "Settings" ? <SettingsActiveSVG /> : <SettingsSVG />}
+          </button>
+        </motion.li>
+        <motion.li
+          initial={{ transform: "translateX(-150px)" }}
+          animate={{ transform: "translateX(0px)" }}
+          transition={{ delay: 0.5 }}
+        >
+          <button
+            style={{ backgroundColor: `#FFDDDD` }}
+            onClick={() => callback("Analytics")}
+            href="/"
+          >
+            <LogOutSVG />
+          </button>
+        </motion.li>
+      </motion.nav>
     </>
   );
 }

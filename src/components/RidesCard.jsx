@@ -5,7 +5,9 @@ function RidesCard() {
     <>
       <div className="rides-card">
         <div>023</div>
-        <div>23:15, 05.03.24</div>
+        <div>23:15, 05.03</div>
+        <div>23:15, 05.03</div>
+        <div>5</div>
         <div>5</div>
         <div>15</div>
         <div>45</div>
