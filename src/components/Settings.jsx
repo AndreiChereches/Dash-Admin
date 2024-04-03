@@ -3,7 +3,12 @@ import "../css/Tables.css";
 function Settings() {
   return (
     <>
-      <div>Settings</div>
+      <label style={{ marginBottom: "12px", fontSize: "24px" }}>Theme Color</label>
+      <>
+        <option value="fruit">Default</option>
+        <option value="vegetable">Grey</option>
+        <option value="meat">Purple</option>
+      </>
     </>
   );
 }

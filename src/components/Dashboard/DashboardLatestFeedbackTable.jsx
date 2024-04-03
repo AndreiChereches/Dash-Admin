@@ -57,11 +57,12 @@ function DashboardLatestFeedbackTable(props) {
                 <>
                   <div
                     className="feedback"
+                    key={index}
                     style={{
                       borderBottom: `1px solid rgba(${props.secondaryColor})`,
                     }}
                   >
-                    <div key={index}>
+                    <div>
                       {feedback.Rating === 1 ? (
                         <>
                           <div className="flex">
@@ -118,9 +119,9 @@ function DashboardLatestFeedbackTable(props) {
                         </>
                       ) : null}
                     </div>
-                    <div key={index}>{feedback.Feedback}</div>
-                    <div key={index}>{feedback.BikeID}</div>
-                    <div key={index}>{feedback.RideID}</div>
+                    <div>{feedback.Feedback}</div>
+                    <div>{feedback.BikeID}</div>
+                    <div>{feedback.RideID}</div>
                   </div>
                 </>
               ))}

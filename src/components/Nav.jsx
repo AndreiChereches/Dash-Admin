@@ -41,14 +41,14 @@ function Nav({ callback, active, secondaryColor }) {
         >
           <button
             style={
-              active === "Rides"
+              active === "Vehicles"
                 ? { backgroundColor: `rgba(${secondaryColor})` }
                 : { backgroundColor: `rgba(${secondaryColor},0.5)` }
             }
-            onClick={() => callback("Rides")}
+            onClick={() => callback("Vehicles")}
             href="/"
           >
-            {active === "Rides" ? <BikeActiveSVG /> : <BikeSVG />}
+            {active === "Vehicles" ? <BikeActiveSVG /> : <BikeSVG />}
           </button>
         </motion.li>
         <motion.li
@@ -58,14 +58,14 @@ function Nav({ callback, active, secondaryColor }) {
         >
           <button
             style={
-              active === "Report"
+              active === "Rides"
                 ? { backgroundColor: `rgba(${secondaryColor})` }
                 : { backgroundColor: `rgba(${secondaryColor},0.5)` }
             }
-            onClick={() => callback("Report")}
+            onClick={() => callback("Rides")}
             href="/"
           >
-            {active === "Report" ? <ReportActiveSVG /> : <ReportSVG />}
+            {active === "Rides" ? <ReportActiveSVG /> : <ReportSVG />}
           </button>
         </motion.li>
         <motion.li
@@ -75,14 +75,14 @@ function Nav({ callback, active, secondaryColor }) {
         >
           <button
             style={
-              active === "Favorites"
+              active === "Feedback"
                 ? { backgroundColor: `rgba(${secondaryColor})` }
                 : { backgroundColor: `rgba(${secondaryColor},0.5)` }
             }
-            onClick={() => callback("Favorites")}
+            onClick={() => callback("Feedback")}
             href="/"
           >
-            {active === "Favorites" ? <FavoriteActiveSVG /> : <FavoriteSVG />}
+            {active === "Feedback" ? <FavoriteActiveSVG /> : <FavoriteSVG />}
           </button>
         </motion.li>
         <motion.li

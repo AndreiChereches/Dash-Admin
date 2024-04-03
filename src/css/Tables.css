@@ -97,19 +97,18 @@
 .rides-top {
   display: flex;
   justify-items: start;
-  grid-template-columns: repeat(7, 1fr);
-  justify-content: space-between;
+  justify-content: space-evenly;
   font-size: 1.8rem;
-  margin-bottom: 3.2rem;
+  padding-block: 8px;
+
   color: #666666;
 }
 .rides-card {
+  min-height: 5vh;
   display: flex;
   justify-items: start;
-  min-height: 5vh;
   align-items: center;
-  grid-template-columns: repeat(7, 1fr);
-  justify-content: space-between;
+  justify-content: space-evenly;
   font-size: 2rem;
 }
 .rides-top > div,
@@ -121,21 +120,52 @@
 /* VEHICLES */
 /*  */
 .vehicles-top {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  justify-content: space-between;
-  font-size: 2rem;
-  margin-bottom: 2.4rem;
+  display: flex;
+  justify-items: start;
+  justify-content: space-evenly;
+  font-size: 1.8rem;
+  padding-block: 8px;
+  color: #666666;
 }
 .vehicles-card {
   min-height: 5vh;
+  display: flex;
+  justify-items: start;
   align-items: center;
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  justify-content: space-between;
+  justify-content: space-evenly;
   font-size: 2rem;
+}
+.vehicles-card > div,
+.vehicles-top > div {
+  width: 200px;
 }
 
 /*  */
-/* ANALYTICS */
+/* Feedback */
 /*  */
+.feedback-card {
+  min-height: 5vh;
+  display: flex;
+  justify-items: start;
+  align-items: center;
+  justify-content: space-evenly;
+  font-size: 2rem;
+}
+.feedback-top {
+  display: flex;
+  justify-items: start;
+  align-items: center;
+  justify-content: space-evenly;
+  font-size: 2rem;
+  font-size: 1.8rem;
+  padding-block: 8px;
+  color: #666666;
+}
+.feedback-top > div,
+.feedback-card > div {
+  width: 120px;
+}
+.feedback-top > div:nth-child(3),
+.feedback-card > div:nth-child(3) {
+  width: 30%;
+}

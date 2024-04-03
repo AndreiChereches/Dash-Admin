@@ -43,9 +43,7 @@ function DashboardOpenReportsTable(props) {
             <div>
               <div className="flex gap-small">
                 <OpenReportsSVG />
-                <div className="open-reports-title">
-                  Open Reports
-                </div>
+                <div className="open-reports-title">Open Reports</div>
               </div>
             </div>
             <div className="feedback-table">
@@ -65,13 +63,14 @@ function DashboardOpenReportsTable(props) {
                   <>
                     <div
                       className="feedback"
+                      key={index}
                       style={{
                         borderBottom: `1px solid rgba(${props.secondaryColor})`,
                       }}
                     >
-                      <div key={index}>{report.Category}</div>
-                      <div key={index}>{report.Details}</div>
-                      <div key={index}>{report.BikeID}</div>
+                      <div>{report.Category}</div>
+                      <div>{report.Details}</div>
+                      <div>{report.BikeID}</div>
                     </div>
                   </>
                 ))}

@@ -7,8 +7,8 @@ function Dashboard(props) {
   return (
     <>
       <div className="dashboard-grid">
-        <DashboardRidesTable />
-        <DashboardVehiclesTable />
+        <DashboardRidesTable secondaryColor={props.secondaryColor} />
+        <DashboardVehiclesTable secondaryColor={props.secondaryColor} />
         <DashboardLatestFeedbackTable secondaryColor={props.secondaryColor} />
         <DashboardOpenReportsTable secondaryColor={props.secondaryColor} />
       </div>

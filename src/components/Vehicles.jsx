@@ -1,10 +1,11 @@
+/* eslint-disable react/prop-types */
 import { USER_KEY, BIKE_IMEI, BIKES } from "../constants/constants";
 import "../css/Tables.css";
 import VehiclesCard from "./VehiclesCard";
 import axios from "axios";
 import { useState, useEffect } from "react";
 
-function Vehicles() {
+function Vehicles(props) {
   const [bikeData, setBikeData] = useState("");
   const [bikeLat, setBikeLat] = useState(0);
   const [bikeLong, setBikeLong] = useState(0);
@@ -16,10 +17,10 @@ function Vehicles() {
       )
       .then((res) => {
         setBikeData(res.data.data);
-        console.log(bikeData);
+        // console.log(bikeData);
         setBikeBattery(res.data.data.batteryPercent);
       });
-  });
+  }, []);
   useEffect(() => {
     axios
       .get(
@@ -28,32 +29,59 @@ function Vehicles() {
       .then((res) => {
         setBikeLat(res.data.data.latitude);
         setBikeLong(res.data.data.longitude);
-        console.log("lat: ", bikeLat);
-        console.log("long: ", bikeLong);
+        // console.log("lat: ", bikeLat);
+        // console.log("long: ", bikeLong);
       });
-  });
+  }, []);
+  useEffect(() => {
+    axios
+      .post("https://dash-backend-372ad5525a1d.herokuapp.com/api/bike/", {
+        bike_number: "1",
+      })
+      .then(() => {
+        console.log("success!");
+      });
+  }, []);
   return (
     <>
       <div className="flex column width100 vehicles-flex">
-        <div className="vehicles-top">
+        <div
+          className="vehicles-top"
+          style={{
+            backgroundColor: `rgba(${props.secondaryColor},0.5)`,
+            borderRadius: "4px",
+          }}
+        >
           <div>Imei</div>
           <div>Vehicle No.</div>
           <div>Battery</div>
+          <div>IOT Battery</div>
+          <div>Hotel</div>
           <div>Total Rides</div>
           <div>Online</div>
         </div>
         {BIKES.map((item, index) => (
-          <VehiclesCard
-            key={index}
-            imei={item.imei}
-            battery={bikeBattery}
-            online={bikeData.online}
-          />
+          <>
+            <div
+              style={{
+                borderBottom: `1px solid rgba(${props.secondaryColor})`,
+              }}
+            >
+              <VehiclesCard
+                key={index}
+                imei={item.imei}
+                battery={bikeBattery}
+                online={bikeData.online}
+              />
+            </div>
+          </>
         ))}
         <div>
           report(cu popup unde se poate scrola si se vad toate reporturile)
           iconita cu loc. + qr(poza) + iot battery + client(la ce hotel ii) +
-          iconita de edit la properties (imei etc), EDIT-UL DUCE PE O SCREEN NOU CU INPUT FIELD-URI SA ADAUGI/STERGI IMAGINI + STATUS + CLIENT + IMEI + QR
+          iconita de edit la properties (imei etc), EDIT-UL DUCE PE O SCREEN NOU
+          CU INPUT FIELD-URI SA ADAUGI/STERGI IMAGINI + STATUS + CLIENT + IMEI +
+          QR
         </div>
       </div>
     </>

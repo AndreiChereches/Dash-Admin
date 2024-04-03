@@ -1,16 +1,20 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "../css/Admin.css";
 import Nav from "./Nav.jsx";
 import Dashboard from "./Dashboard/Dashboard.jsx";
 import Rides from "./Rides.jsx";
-import Favorites from "./Favorites.jsx";
+import Vehicles from "./Vehicles.jsx";
+import Feedback from "./Feedback.jsx";
 import Settings from "./Settings.jsx";
-import Report from "./Report.jsx";
 import logo from "../assets/logo.png";
 
 function App() {
   const [table, setTable] = useState("Dashboard");
   const [secondaryColor, setSecondaryColor] = useState("204, 231, 255");
+  useEffect(() => {
+    setSecondaryColor("204, 231, 255");
+  }, []);
+
   const activeTable = (value) => {
     setTable(value);
   };
@@ -19,7 +23,7 @@ function App() {
       <div
         className="flex title-flex"
         style={{
-          backgroundColor: `rgba(${(secondaryColor)},0.5)`,
+          backgroundColor: `rgba(${secondaryColor},0.5)`,
         }}
       >
         <a href="https://www.ridedash.eu">
@@ -38,10 +42,18 @@ function App() {
             {table === "Dashboard" ? (
               <Dashboard secondaryColor={secondaryColor} />
             ) : null}
-            {table === "Rides" ? <Rides /> : null}
-            {table === "Report" ? <Report /> : null}
-            {table === "Favorites" ? <Favorites /> : null}
-            {table === "Settings" ? <Settings /> : null}
+            {table === "Vehicles" ? (
+              <Vehicles secondaryColor={secondaryColor} />
+            ) : null}
+            {table === "Rides" ? (
+              <Rides secondaryColor={secondaryColor} />
+            ) : null}
+            {table === "Feedback" ? (
+              <Feedback secondaryColor={secondaryColor} />
+            ) : null}
+            {table === "Settings" ? (
+              <Settings secondaryColor={secondaryColor} />
+            ) : null}
           </div>
         </div>
       </div>

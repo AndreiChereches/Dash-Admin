@@ -1,24 +1,24 @@
 /* eslint-disable react/prop-types */
-import { BIKES } from "../constants/constants";
 import "../css/Tables.css";
-import RidesCard from "./RidesCard.jsx";
+import { BIKES } from "../constants/constants";
+import FeedbackCard from "./FeedbackCard";
 
-function Rides(props) {
+function Feedback(props) {
   return (
     <>
       <div className="flex column width100">
         <div
-          className="rides-top"
+          className="feedback-top"
           style={{
             backgroundColor: `rgba(${props.secondaryColor},0.5)`,
             borderRadius: "4px",
           }}
         >
           <div>ID</div>
-          <div>Start time</div>
-          <div>End time</div>
+          <div>From</div>
+          <div>Messaage</div>
           <div>Vehicle No.</div>
-          <div>Room No.</div>
+          <div>Stars</div>
           <div>Distance(Km)</div>
           <div>Duration(Min)</div>
           <div>Rating</div>
@@ -31,17 +31,13 @@ function Rides(props) {
                 borderBottom: `1px solid rgba(${props.secondaryColor})`,
               }}
             >
-              <RidesCard key={index} />
+              <FeedbackCard key={index} />
             </div>
           </>
         ))}
-        {/* <div>
-          adauga end time + dropdown la ruta cu iconita de harta(google maps) +
-          room no. + feedback la rating
-        </div> */}
       </div>
     </>
   );
 }
 
-export default Rides;
+export default Feedback;

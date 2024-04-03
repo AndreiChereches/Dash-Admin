@@ -8,6 +8,8 @@ function VehiclesCard(props) {
         <div>{props.imei}</div>
         <div>1</div>
         <div>{props.battery}%</div>
+        <div>{props.battery}%</div>
+        <div>Radisson</div>
         <div>12</div>
         <div>{props.online}</div>
       </div>
