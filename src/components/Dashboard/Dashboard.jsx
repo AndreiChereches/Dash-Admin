@@ -3,6 +3,7 @@ import DashboardRidesTable from "./DashboardRidesTable.jsx";
 import DashboardVehiclesTable from "./DashboardVehiclesTable.jsx";
 import DashboardOpenReportsTable from "./DashboardOpenReportsTable.jsx";
 import DashboardLatestFeedbackTable from "./DashboardLatestFeedbackTable.jsx";
+
 function Dashboard(props) {
   return (
     <>

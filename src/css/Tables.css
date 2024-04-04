@@ -4,7 +4,9 @@
 .aling-items-center {
   align-items: center;
 }
-
+.col {
+  flex-direction: column;
+}
 /*  */
 /* DASHBOARD */
 /*  */
@@ -100,7 +102,6 @@
   justify-content: space-evenly;
   font-size: 1.8rem;
   padding-block: 8px;
-
   color: #666666;
 }
 .rides-card {
@@ -123,7 +124,7 @@
   display: flex;
   justify-items: start;
   justify-content: space-evenly;
-  font-size: 1.8rem;
+  font-size: 2rem;
   padding-block: 8px;
   color: #666666;
 }
@@ -137,9 +138,12 @@
 }
 .vehicles-card > div,
 .vehicles-top > div {
-  width: 200px;
+  width: 130px;
 }
-
+.vehicles-card > div:first-child,
+.vehicles-top > div:first-child {
+  width: 185px;
+}
 /*  */
 /* Feedback */
 /*  */

@@ -6,6 +6,7 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 
 function Vehicles(props) {
+  const [editing, setEditing] = useState(false);
   const [bikeData, setBikeData] = useState("");
   const [bikeLat, setBikeLat] = useState(0);
   const [bikeLong, setBikeLong] = useState(0);
@@ -44,6 +45,7 @@ function Vehicles(props) {
   }, []);
   return (
     <>
+     
       <div className="flex column width100 vehicles-flex">
         <div
           className="vehicles-top"
@@ -57,8 +59,11 @@ function Vehicles(props) {
           <div>Battery</div>
           <div>IOT Battery</div>
           <div>Hotel</div>
+          <div>Location</div>
           <div>Total Rides</div>
           <div>Online</div>
+          <div>Qr</div>
+          <div>Edit</div>
         </div>
         {BIKES.map((item, index) => (
           <>
@@ -69,19 +74,20 @@ function Vehicles(props) {
             >
               <VehiclesCard
                 key={index}
+                index={index}
                 imei={item.imei}
                 battery={bikeBattery}
                 online={bikeData.online}
+                qr={item.qr}
               />
             </div>
           </>
         ))}
         <div>
           report(cu popup unde se poate scrola si se vad toate reporturile)
-          iconita cu loc. + qr(poza) + iot battery + client(la ce hotel ii) +
-          iconita de edit la properties (imei etc), EDIT-UL DUCE PE O SCREEN NOU
-          CU INPUT FIELD-URI SA ADAUGI/STERGI IMAGINI + STATUS + CLIENT + IMEI +
-          QR
+          iconita cu loc. + qr(poza) iconita de edit la properties (imei etc),
+          EDIT-UL DUCE PE O SCREEN NOU CU INPUT FIELD-URI SA ADAUGI/STERGI
+          IMAGINI + STATUS + CLIENT + IMEI + QR
         </div>
       </div>
     </>

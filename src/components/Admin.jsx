@@ -8,7 +8,7 @@ import Feedback from "./Feedback.jsx";
 import Settings from "./Settings.jsx";
 import logo from "../assets/logo.png";
 
-function App() {
+function Admin() {
   const [table, setTable] = useState("Dashboard");
   const [secondaryColor, setSecondaryColor] = useState("204, 231, 255");
   useEffect(() => {
@@ -61,4 +61,4 @@ function App() {
   );
 }
 
-export default App;
+export default Admin;
