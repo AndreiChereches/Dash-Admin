@@ -6,6 +6,7 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 
 function Vehicles(props) {
+  
   const [editing, setEditing] = useState(false);
   const [bikeData, setBikeData] = useState("");
   const [bikeLat, setBikeLat] = useState(0);
@@ -23,6 +24,7 @@ function Vehicles(props) {
       });
   }, []);
   useEffect(() => {
+    
     axios
       .get(
         "https://iot-api.okai.co/shareos-device/scooter/query/location?userKey=jzah5zxlm7mxmsl1wgbxyn2dzb6akluq&timestamp=000&sign=000&imei=868963047087986"
@@ -34,18 +36,29 @@ function Vehicles(props) {
         // console.log("long: ", bikeLong);
       });
   }, []);
-  useEffect(() => {
-    axios
-      .post("https://dash-backend-372ad5525a1d.herokuapp.com/api/bike/", {
-        bike_number: "1",
-      })
-      .then(() => {
-        console.log("success!");
-      });
+
+  const fetchData = async () => {
+    const jsonData = JSON.stringify({ bike_number:"220", status:"online" });
+    const res =  await axios
+      .post("https://dash-backend-372ad5525a1d.herokuapp.com/api/bike/",
+      jsonData
+      )
+    console.log(res.error.response.data);
+  }
+
+  useEffect (  () =>  {
+    fetchData();
   }, []);
+  // useEffect(() => {
+  //   axios
+  //     .get("https://dash-backend-372ad5525a1d.herokuapp.com/api/bike/"
+  //     )
+  //     .then((res) => {
+  //       console.log(res.data);
+  //     });
+  // }, []);
   return (
     <>
-     
       <div className="flex column width100 vehicles-flex">
         <div
           className="vehicles-top"
