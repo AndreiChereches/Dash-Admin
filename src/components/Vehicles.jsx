@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { USER_KEY, BIKE_IMEI, BIKES } from "../constants/constants";
+import { USER_KEY, BIKE_IMEI } from "../constants/constants";
 import "../css/Tables.css";
 import VehiclesCard from "./VehiclesCard";
 import axios from "axios";
@@ -9,9 +9,6 @@ function Vehicles(props) {
   const [editing, setEditing] = useState("false");
   const [bikeData, setBikeData] = useState("");
   const [bikes, setBikes] = useState([""]);
-  const [bikeLat, setBikeLat] = useState(0);
-  const [bikeLong, setBikeLong] = useState(0);
-  const [bikeBattery, setBikeBattery] = useState(0);
   const IsEditing = (value) => {
     setEditing(value);
     props.callbackIsEditing(editing);
@@ -23,22 +20,20 @@ function Vehicles(props) {
       )
       .then((res) => {
         setBikeData(res.data.data);
-        // console.log(bikeData);
-        setBikeBattery(res.data.data.batteryPercent);
       });
   }, []);
-  useEffect(() => {
-    axios
-      .get(
-        "https://iot-api.okai.co/shareos-device/scooter/query/location?userKey=jzah5zxlm7mxmsl1wgbxyn2dzb6akluq&timestamp=000&sign=000&imei=868963047087986"
-      )
-      .then((res) => {
-        setBikeLat(res.data.data.latitude);
-        setBikeLong(res.data.data.longitude);
-        // console.log("lat: ", bikeLat);
-        // console.log("long: ", bikeLong);
-      });
-  }, []);
+  // useEffect(() => {
+  //   axios
+  //     .get(
+  //       "https://iot-api.okai.co/shareos-device/scooter/query/location?userKey=jzah5zxlm7mxmsl1wgbxyn2dzb6akluq&timestamp=000&sign=000&imei=868963047087986"
+  //     )
+  //     .then((res) => {
+  //       setBikeLat(res.data.data.latitude);
+  //       setBikeLong(res.data.data.longitude);
+  //       // console.log("lat: ", bikeLat);
+  //       // console.log("long: ", bikeLong);
+  //     });
+  // }, []);
 
   const fetchData = async () => {
     const jsonData = JSON.stringify({ bike_number: "220", status: "online" });
@@ -66,9 +61,21 @@ function Vehicles(props) {
         bike_number: "231",
       };
   }, []);
+
   return (
     <>
-      <button>Add vehicle</button>
+      <button
+        className="add-vehicle-btn"
+        style={{
+          backgroundColor: `rgba(${props.primaryColor})`,
+          borderRadius: "4px",
+        }}
+        onClick={() => {
+          props.AddingABike(true);
+        }}
+      >
+        Add a new bike
+      </button>
       <div className="flex column width100 vehicles-flex">
         <div
           className="vehicles-top"

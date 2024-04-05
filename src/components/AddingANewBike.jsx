@@ -2,10 +2,9 @@
 
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { useLocation, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
+
 function EditPage(props) {
-  const location = useLocation();
-  const { vehicleNo } = location.state;
   const [valueImei, setValueImei] = useState("");
   const [resultImei, setResultImei] = useState("");
   const [valueHotel, setValueHotel] = useState("");
@@ -37,11 +36,10 @@ function EditPage(props) {
     setValueStatus(e.target.value);
     setResultStatus("");
   };
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   const fetchData = async () => {
     const jsonData = JSON.stringify({ bike_number: "220", status: "online" });
     const res = await axios.post(
-      `https://dash-backend-372ad5525a1d.herokuapp.com/api/bike/${vehicleNo}/`,
+      `https://dash-backend-372ad5525a1d.herokuapp.com/api/bike/`,
       jsonData
     );
     console.log(res.error.response.data);
@@ -49,32 +47,23 @@ function EditPage(props) {
 
   useEffect(() => {
     fetchData();
-  }, [fetchData]);
+  }, []);
   useEffect(() => {
-    axios.patch(
-      `https://dash-backend-372ad5525a1d.herokuapp.com/api/bike/${vehicleNo}/`,
+    axios.put("https://dash-backend-372ad5525a1d.herokuapp.com/api/bike"),
       {
-        imei: `${resultImei}`,
-        client: `${resultHotel}`,
-        status: `${resultStatus}`,
-        bike_number: `${resultVehicleNo}`,
-      }
-    );
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [resultImei, resultVehicleNo, resultHotel, resultStatus]);
+        bike_number: "231",
+      };
+  }, []);
   return (
     <>
       <div className="flex gap-md">
         <Link
-          onClick={() => props.Editing(false)}
+          onClick={() => props.AddingABike(false)}
           className="edit-back-btn"
           to="/"
         >
           &larr; Back
         </Link>
-        <h2 className="edit-heading">
-          Editing bike with vehicle number: {vehicleNo}
-        </h2>
       </div>
       <form className="edit-form" onSubmit={handleSubmit}>
         <div className="editform-flex">
@@ -126,13 +115,13 @@ function EditPage(props) {
         <button className="edit-submit-btn" type="submit">
           SUBMIT
         </button>
+        <h4>
+          {resultImei}
+          {resultVehicleNo}
+          {resultHotel}
+          {resultStatus}
+        </h4>
       </form>
-      <h4>
-        {resultImei}
-        {resultVehicleNo}
-        {resultHotel}
-        {resultStatus}
-      </h4>
     </>
   );
 }

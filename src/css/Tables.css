@@ -176,6 +176,14 @@
 .feedback-card > div:nth-child(3) {
   width: 30%;
 }
+.add-vehicle-btn {
+  color: #fff;
+  padding-block: 8px;
+  padding-inline: 16px;
+  font-size: 2rem;
+  margin-bottom: 2.4rem;
+  cursor: pointer;
+}
 /*  */
 /* EDIT */
 /*  */
