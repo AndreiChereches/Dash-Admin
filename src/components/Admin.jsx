@@ -6,17 +6,26 @@ import Rides from "./Rides.jsx";
 import Vehicles from "./Vehicles.jsx";
 import Feedback from "./Feedback.jsx";
 import Settings from "./Settings.jsx";
+import EditPage from "./EditPage.jsx";
 import logo from "../assets/logo.png";
 
 function Admin() {
+  const [editing, setEditing] = useState("false");
   const [table, setTable] = useState("Dashboard");
   const [secondaryColor, setSecondaryColor] = useState("204, 231, 255");
   useEffect(() => {
     setSecondaryColor("204, 231, 255");
   }, []);
+  useEffect(() => {
+    editing === true ? setTable("Editing") : null;
+  }, [editing]);
 
   const activeTable = (value) => {
     setTable(value);
+  };
+  const Editing = (value) => {
+    setEditing(value);
+    value === false ? setTable("Vehicles") : null;
   };
   return (
     <>
@@ -43,7 +52,10 @@ function Admin() {
               <Dashboard secondaryColor={secondaryColor} />
             ) : null}
             {table === "Vehicles" ? (
-              <Vehicles secondaryColor={secondaryColor} />
+              <Vehicles
+                secondaryColor={secondaryColor}
+                callbackIsEditing={Editing}
+              />
             ) : null}
             {table === "Rides" ? (
               <Rides secondaryColor={secondaryColor} />
@@ -54,6 +66,7 @@ function Admin() {
             {table === "Settings" ? (
               <Settings secondaryColor={secondaryColor} />
             ) : null}
+            {table === "Editing" ? <EditPage Editing={Editing} /> : null}
           </div>
         </div>
       </div>

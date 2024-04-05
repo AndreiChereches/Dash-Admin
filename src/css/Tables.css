@@ -1,6 +1,9 @@
 .gap-small {
   gap: 6px;
 }
+.gap-md {
+  gap: 6rem;
+}
 .aling-items-center {
   align-items: center;
 }
@@ -172,4 +175,40 @@
 .feedback-top > div:nth-child(3),
 .feedback-card > div:nth-child(3) {
   width: 30%;
+}
+/*  */
+/* EDIT */
+/*  */
+.edit-back-btn {
+  color: rgb(25, 136, 239);
+  font-size: 2rem;
+}
+.edit-form {
+  display: flex;
+  flex-direction: column;
+  height: 50vh;
+  width: 50vw;
+
+  justify-content: space-evenly;
+}
+.edit-form-label {
+  font-size: 2rem;
+}
+
+.editform-flex {
+  display: flex;
+  justify-content: space-between;
+}
+.edit-heading {
+  font-size: 2rem;
+  font-weight: 400;
+}
+.edit-submit-btn {
+  cursor: pointer;
+  background-color: rgb(25, 136, 239);
+  padding-block: 12px;
+  padding-inline: 24px;
+  border-radius: 8px;
+  color: #fff;
+  align-self: end;
 }

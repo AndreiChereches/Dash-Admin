@@ -21,7 +21,6 @@ function Rides(props) {
           <div>Vehicle No.</div>
           <div>Room No.</div>
           <div>Distance(Km)</div>
-          <div>Route</div>
           <div>Duration(Min)</div>
           <div>Rating</div>
           <div>Report</div>

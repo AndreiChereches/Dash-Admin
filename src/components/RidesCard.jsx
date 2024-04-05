@@ -10,7 +10,6 @@ function RidesCard() {
         <div>5</div>
         <div>5</div>
         <div>15</div>
-        <div><button>View</button></div>
         <div>45</div>
         <div>5/5</div>
         <div>none</div>

@@ -1,8 +1,11 @@
 /* eslint-disable react/prop-types */
 
-import { useState } from "react";
-
+import { useState, useEffect } from "react";
+import axios from "axios";
+import { useLocation, Link } from "react-router-dom";
 function EditPage(props) {
+  const location = useLocation();
+  const { vehicleNo } = location.state;
   const [valueImei, setValueImei] = useState("");
   const [resultImei, setResultImei] = useState("");
   const [valueHotel, setValueHotel] = useState("");
@@ -34,58 +37,100 @@ function EditPage(props) {
     setValueStatus(e.target.value);
     setResultStatus("");
   };
+  const fetchData = async () => {
+    const jsonData = JSON.stringify({ bike_number: "220", status: "online" });
+    const res = await axios.post(
+      `https://dash-backend-372ad5525a1d.herokuapp.com/api/bike/${vehicleNo}/`,
+      jsonData
+    );
+    console.log(res.error.response.data);
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+  useEffect(() => {
+    axios.patch(
+      `https://dash-backend-372ad5525a1d.herokuapp.com/api/bike/${vehicleNo}/`,
+      {
+        imei: `${resultImei}`,
+        client: `${resultHotel}`,
+        status: `${resultStatus}`,
+        bike_number: `${resultVehicleNo}`,
+      }
+    );
+  }, [resultImei, resultVehicleNo, resultHotel, resultStatus]);
   return (
     <>
-      <div className="flex column width100 vehicles-flex">
-        <div
-          className="vehicles-top"
-          style={{
-            backgroundColor: `rgba(${props.secondaryColor},0.5)`,
-            borderRadius: "4px",
-          }}
+      <div className="flex gap-md">
+        <Link
+          onClick={() => props.Editing(false)}
+          className="edit-back-btn"
+          to="/"
         >
-          <form onSubmit={handleSubmit}>
-            <div className="flex col">
-              <label>Imei</label>
-              <input type="text" value={valueImei} onInput={handleChangeImei} />
-            </div>
-            <div className="flex col">
-              <label>Vehicle No.</label>
-              <input
-                type="text"
-                value={valueVehicleNo}
-                onInput={handleChangeVehicleNo}
-              />
-            </div>
-            <div className="flex col">
-              <label>Hotel</label>
-              <input
-                type="text"
-                value={valueHotel}
-                onInput={handleChangeHotel}
-              />
-            </div>
-            <div className="flex col">
-              <label>Status</label>
-              <input
-                type="text"
-                value={valueStatus}
-                onInput={handleChangeStatus}
-              />
-            </div>
-            <div className="flex col">
-              <label>Qr</label>
-              <input type="text" />
-            </div>
-            <button style={{ cursor: "pointer" }} type="submit">
-              SUBMIT
-            </button>
-          </form>
-          <h4>
-            {resultImei};{resultVehicleNo};{resultHotel};{resultStatus}
-          </h4>
-        </div>
+          &larr; Back
+        </Link>
+        <h2 className="edit-heading">
+          Editing bike with vehicle number: {vehicleNo}
+        </h2>
       </div>
+      <form className="edit-form" onSubmit={handleSubmit}>
+        <div className="editform-flex">
+          <div className="flex col">
+            <label className="edit-form-label">Imei</label>
+            <input
+              className="edit-form-input"
+              type="text"
+              value={valueImei}
+              onInput={handleChangeImei}
+              required
+            />
+          </div>
+          <div className="flex col">
+            <label className="edit-form-label">Vehicle No.</label>
+            <input
+              className="edit-form-input"
+              type="text"
+              value={valueVehicleNo}
+              onInput={handleChangeVehicleNo}
+              required
+            />
+          </div>
+          <div className="flex col">
+            <label className="edit-form-label">Hotel</label>
+            <input
+              className="edit-form-input"
+              type="text"
+              value={valueHotel}
+              onInput={handleChangeHotel}
+              required
+            />
+          </div>
+          <div className="flex col">
+            <label className="edit-form-label">Status</label>
+            <input
+              className="edit-form-input"
+              type="text"
+              value={valueStatus}
+              onInput={handleChangeStatus}
+              required
+            />
+          </div>
+          {/* <div className="flex col">
+            <label className="edit-form-label">Qr</label>
+            <input type="file" />
+          </div> */}
+        </div>
+        <button className="edit-submit-btn" type="submit">
+          SUBMIT
+        </button>
+      </form>
+      <h4>
+        {resultImei}
+        {resultVehicleNo}
+        {resultHotel}
+        {resultStatus}
+      </h4>
     </>
   );
 }
