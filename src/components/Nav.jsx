@@ -109,7 +109,7 @@ function Nav({ callback, active, secondaryColor }) {
         >
           <button
             style={{ backgroundColor: `#FFDDDD` }}
-            onClick={() => callback("Analytics")}
+            onClick={() => callback("Logout")}
             href="/"
           >
             <LogOutSVG />

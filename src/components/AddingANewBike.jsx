@@ -37,7 +37,10 @@ function EditPage(props) {
     setResultStatus("");
   };
   const fetchData = async () => {
-    const jsonData = JSON.stringify({ bike_number: "220", status: "online" });
+    const jsonData = JSON.stringify({
+      bike_number: "2201111",
+      status: "online",
+    });
     const res = await axios.post(
       `https://dash-backend-372ad5525a1d.herokuapp.com/api/bike/`,
       jsonData
@@ -49,11 +52,14 @@ function EditPage(props) {
     fetchData();
   }, []);
   useEffect(() => {
-    axios.put("https://dash-backend-372ad5525a1d.herokuapp.com/api/bike"),
+    axios.post("https://dash-backend-372ad5525a1d.herokuapp.com/api/bike/"),
       {
-        bike_number: "231",
+        bike_number: resultVehicleNo,
+        imei: resultImei,
+        client: resultHotel,
+        status: resultStatus,
       };
-  }, []);
+  }, [resultStatus, resultImei, resultVehicleNo, resultHotel]);
   return (
     <>
       <div className="flex gap-md">
@@ -115,12 +121,9 @@ function EditPage(props) {
         <button className="edit-submit-btn" type="submit">
           SUBMIT
         </button>
-        <h4>
-          {resultImei}
-          {resultVehicleNo}
-          {resultHotel}
-          {resultStatus}
-        </h4>
+        {resultStatus === "" ? null : (
+          <h4 style={{ position: "absolute", color: "#008000" }}>Success</h4>
+        )}
       </form>
     </>
   );

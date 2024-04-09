@@ -17,7 +17,7 @@ function VehiclesCard(props) {
             loc
           </Link>
         </div>
-        <div>totalRides</div>
+        <div>{props.total_trips}</div>
         <div>{props.status}</div>
         <div style={{ height: "50px", paddingBlock: "10px" }}>
           <img

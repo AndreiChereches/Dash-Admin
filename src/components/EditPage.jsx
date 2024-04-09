@@ -54,14 +54,25 @@ function EditPage(props) {
     axios.patch(
       `https://dash-backend-372ad5525a1d.herokuapp.com/api/bike/${vehicleNo}/`,
       {
-        imei: `${resultImei}`,
-        client: `${resultHotel}`,
-        status: `${resultStatus}`,
-        bike_number: `${resultVehicleNo}`,
+        imei: resultImei,
+        client: resultHotel,
+        status: resultStatus,
+        bike_number: resultVehicleNo,
       }
     );
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [resultImei, resultVehicleNo, resultHotel, resultStatus]);
+
+  // WORKING ->   useEffect(() => {
+  //     axios.patch(
+  //       `https://dash-backend-372ad5525a1d.herokuapp.com/api/bike/BIC1/`,
+  //       {
+  //         bike_number: "schimbat",
+  //       }
+  //     );
+  // });
+
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   return (
     <>
       <div className="flex gap-md">

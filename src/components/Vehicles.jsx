@@ -12,6 +12,9 @@ function Vehicles(props) {
   const IsEditing = (value) => {
     setEditing(value);
     props.callbackIsEditing(editing);
+    setTimeout(() => {
+      console.log(editing);
+    }, 500); //test
   };
   useEffect(() => {
     axios
@@ -36,7 +39,10 @@ function Vehicles(props) {
   // }, []);
 
   const fetchData = async () => {
-    const jsonData = JSON.stringify({ bike_number: "220", status: "online" });
+    const jsonData = JSON.stringify({
+      bike_number: "22011111",
+      status: "online",
+    });
     const res = await axios.post(
       "https://dash-backend-372ad5525a1d.herokuapp.com/api/bike/",
       jsonData
@@ -115,6 +121,7 @@ function Vehicles(props) {
                 qr={item.qr_code}
                 secondaryColor={props.secondaryColor}
                 callbackEdit={IsEditing}
+                total_trips={item.total_trips}
               />
             </div>
           </>
