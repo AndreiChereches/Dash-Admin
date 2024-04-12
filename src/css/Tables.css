@@ -119,6 +119,16 @@
 .rides-card > div {
   width: 140px;
 }
+.rides-top > div:nth-child(1),
+.rides-card > div:nth-child(1) {
+  width: 35px;
+}
+.rides-top > div:nth-child(2),
+.rides-card > div:nth-child(2),
+.rides-top > div:nth-child(3),
+.rides-card > div:nth-child(3) {
+  width: 200px;
+}
 
 /*  */
 /* VEHICLES */

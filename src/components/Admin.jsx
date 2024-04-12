@@ -7,6 +7,7 @@ import Vehicles from "./Vehicles.jsx";
 import Feedback from "./Feedback.jsx";
 import Settings from "./Settings.jsx";
 import EditPage from "./EditPage.jsx";
+import Report from "./Report.jsx";
 import AddingANewBike from "./AddingANewBike.jsx";
 import logo from "../assets/logo.png";
 
@@ -73,6 +74,9 @@ function Admin() {
             ) : null}
             {table === "Feedback" ? (
               <Feedback secondaryColor={secondaryColor} />
+            ) : null}
+            {table === "Report" ? (
+              <Report secondaryColor={secondaryColor} />
             ) : null}
             {table === "Settings" ? (
               <Settings secondaryColor={secondaryColor} />

@@ -92,6 +92,23 @@ function Nav({ callback, active, secondaryColor }) {
         >
           <button
             style={
+              active === "Report"
+                ? { backgroundColor: `rgba(${secondaryColor})` }
+                : { backgroundColor: `rgba(${secondaryColor},0.5)` }
+            }
+            onClick={() => callback("Report")}
+            href="/"
+          >
+            {active === "Report" ? <FavoriteActiveSVG /> : <FavoriteSVG />}
+          </button>
+        </motion.li>
+        <motion.li
+          initial={{ transform: "translateX(-150px)" }}
+          animate={{ transform: "translateX(0px)" }}
+          transition={{ delay: 0.5 }}
+        >
+          <button
+            style={
               active === "Settings"
                 ? { backgroundColor: `rgba(${secondaryColor})` }
                 : { backgroundColor: `rgba(${secondaryColor},0.5)` }
@@ -105,7 +122,7 @@ function Nav({ callback, active, secondaryColor }) {
         <motion.li
           initial={{ transform: "translateX(-150px)" }}
           animate={{ transform: "translateX(0px)" }}
-          transition={{ delay: 0.5 }}
+          transition={{ delay: 0.6 }}
         >
           <button
             style={{ backgroundColor: `#FFDDDD` }}

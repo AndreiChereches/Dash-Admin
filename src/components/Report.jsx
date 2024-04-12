@@ -2,33 +2,32 @@
 import "../css/Tables.css";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import FeedbackCard from "./FeedbackCard";
+import ReportCard from "./ReportCard";
 
-function Feedback(props) {
+function Report(props) {
   const [bikes, setBikes] = useState([""]);
+  let reports = [];
   useEffect(() => {
     axios
       .get("https://dash-backend-372ad5525a1d.herokuapp.com/api/bike/")
       .then((res) => {
         setBikes(res.data);
-        // console.log(res.data);
-        // res.data.map((item) => {
-        //   item.feedbacks === null ? null : console.log(item.feedbacks);
-        // });
-      });
-  }, []);
-  useEffect(() => {
-    axios
-      .get(
-        "https://dash-backend-372ad5525a1d.herokuapp.com/api/metrics/?start=2024-3-1&end=2024-3-2"
-      )
-      .then((res) => {
         console.log(res.data);
+        res.data.map((item) => {
+          item.reports.length === 0 ? null : console.log(item.reports);
+          item.reports.length === 0
+            ? null
+            : reports.push({
+                category: item.reports.category,
+                details: item.reports.details,
+              });
+        });
       });
   }, []);
 
-  //
-  //
+  setTimeout(() => {
+    console.log(reports.category + "reports");
+  }, 2000);
   return (
     <>
       <div className="flex column width100">
@@ -48,33 +47,27 @@ function Feedback(props) {
           <div>Rating</div>
           <div>Report</div>
         </div>
-        {/* {bikes.map((item, index) => (
-          <>
-            {item.feedbacks === "" ? null : (
+      </div>
+      {bikes.map((item, index) => {
+        item.reports?.map((report) => {
+          return (
+            <>
               <div
                 style={{
                   borderBottom: `1px solid rgba(${props.secondaryColor})`,
                 }}
               >
-                <FeedbackCard
-                  key={index}
-                  index={index + 1}
-                  client={item.client}
-                  feedbacks={item.feedbacks}
-                  bikeNumber={item.bike_number}
-                />
+                {console.log(report.category)}
+                {report.category}
               </div>
-            )}
-          </>
-        ))} */}
-        {/* {bikes.map((item) => {
-          item.feedbacks.map((feedback) => {
-            feedback === "" ? null : null;
-          });
-        })} */}
-      </div>
+              ;<div>bbb</div>;
+            </>
+          );
+        });
+      })}
+      <div>test</div>
     </>
   );
 }
 
-export default Feedback;
+export default Report;

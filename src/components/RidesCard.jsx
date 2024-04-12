@@ -1,18 +1,19 @@
+/* eslint-disable react/prop-types */
 import "../css/Tables.css";
 
-function RidesCard() {
+function RidesCard(props) {
   return (
     <>
       <div className="rides-card">
-        <div>023</div>
-        <div>23:15, 05.03</div>
-        <div>23:15, 05.03</div>
-        <div>5</div>
-        <div>5</div>
-        <div>15</div>
-        <div>45</div>
-        <div>5/5</div>
-        <div>none</div>
+        <div>{props.id}</div>
+        <div>{props.timestamp}</div>
+        <div>{props.timestamp}</div>
+        <div>{props.bike}</div>
+        <div>{props.userRoom}</div>
+        <div>{props.distanceTraveled}</div>
+        <div>{props.duration}</div>
+        <div>{props.rating}/5</div>
+        <div>{props.report}</div>
       </div>
     </>
   );

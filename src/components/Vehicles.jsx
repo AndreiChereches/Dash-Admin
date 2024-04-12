@@ -25,47 +25,13 @@ function Vehicles(props) {
         setBikeData(res.data.data);
       });
   }, []);
-  // useEffect(() => {
-  //   axios
-  //     .get(
-  //       "https://iot-api.okai.co/shareos-device/scooter/query/location?userKey=jzah5zxlm7mxmsl1wgbxyn2dzb6akluq&timestamp=000&sign=000&imei=868963047087986"
-  //     )
-  //     .then((res) => {
-  //       setBikeLat(res.data.data.latitude);
-  //       setBikeLong(res.data.data.longitude);
-  //       // console.log("lat: ", bikeLat);
-  //       // console.log("long: ", bikeLong);
-  //     });
-  // }, []);
 
-  const fetchData = async () => {
-    const jsonData = JSON.stringify({
-      bike_number: "22011111",
-      status: "online",
-    });
-    const res = await axios.post(
-      "https://dash-backend-372ad5525a1d.herokuapp.com/api/bike/",
-      jsonData
-    );
-    console.log(res.error.response.data);
-  };
-
-  useEffect(() => {
-    fetchData();
-  }, []);
   useEffect(() => {
     axios
       .get("https://dash-backend-372ad5525a1d.herokuapp.com/api/bike/")
       .then((res) => {
         setBikes(res.data);
-        console.log(res.data);
       });
-  }, []);
-  useEffect(() => {
-    axios.put("https://dash-backend-372ad5525a1d.herokuapp.com/api/bike"),
-      {
-        bike_number: "231",
-      };
   }, []);
 
   return (
